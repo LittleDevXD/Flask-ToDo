@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %} 
+<div class="container mr-auto mt-4 mb-4" style="width:90%;background-color: aliceblue;">
+    <div class="container p-5" style="display: flex; align-items: center; flex-direction: column; justify-content: center;">
+        <h1 class="pt-5">Organize your tasks</h1>
+        <h6 class="pt-4">Get started to experience an organized life</h6>
+        <a href="{{ url_for('todo_page') }}" class="btn btn-control btn-info mb-5 mt-2">
+            Get Started
+        </a>
+    </div>
+</div>
+{% endblock %}

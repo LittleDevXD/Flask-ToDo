@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}
+    ToDo
+{% endblock %}
+
+{% block content %}
+    <form method="POST" class="d-flex mr-auto" style="width:90%;">
+        {{ form.hidden_tag() }}
+        <div class="container d-flex mt-3" style="align-items: center; justify-content: center;">
+            <div class="form-group">
+                {{ form.task(class="form-control", placeholder="Add your task here...")}}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary btn-block") }}
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-md-6 mt-3 ml-3">
+            <h3>Tasks in queue</h3>
+            <p>Work, work, finish your tasks and earn more success</p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tasks</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                        <tr>
+                            <td></th>
+                            <td>{{ task.task }}</td>
+                            <td>
+                                <a href="" class="btn btn-control btn-success">
+                                    Complete
+                                </a>
+                                <a href="" class="btn btn-control btn-danger">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+            <div class="col-md-5 mt-3">
+                <h3>Completed Tasks</h3>
+                <p>Congratulations! you made it.</p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tasks</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in tasks %}
+                            <tr>
+                                <td></th>
+                                <td>{{ task.task }}</td>
+                                <td>
+                                    <a href="" class="btn btn-control btn-success">
+                                        Complete
+                                    </a>
+                                    <a href="" class="btn btn-control btn-danger">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+    </div>
+    
+{% endblock %}
