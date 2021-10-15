@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-md-6 mt-3 ml-3">
             <h3>Tasks in queue</h3>
-            <p>Work, work, finish your tasks and earn more success</p>
+            <p>Work, work, finish your tasks</p>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -32,13 +32,14 @@
                         <tr>
                             <td></th>
                             <td>{{ task.task }}</td>
-                            <td>
-                                <a href="" class="btn btn-control btn-success">
-                                    Complete
-                                </a>
-                                <a href="" class="btn btn-control btn-danger">
-                                    Delete
-                                </a>
+                            <td class="d-flex">
+                                <form action="" method="POST">
+                                    {{ complete_form.hidden_tag() }}
+
+                                    <input id="completed_task" name="completed_task" type="hidden" value="{{ task.task }}">
+                                    {{ complete_form.submit(class="btn btn-info btn-control") }}
+                                </form>
+                                
                             </td>
                         </tr>
                     {% endfor %}
@@ -57,17 +58,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for task in tasks %}
+                        {% for f_task in f_tasks %}
                             <tr>
                                 <td></th>
-                                <td>{{ task.task }}</td>
-                                <td>
-                                    <a href="" class="btn btn-control btn-success">
-                                        Complete
-                                    </a>
-                                    <a href="" class="btn btn-control btn-danger">
+                                <td>{{ f_task.task }}</td>
+                                <td class="d-flex">
+                                    <form action="" method="POST">
+                                        {{ uncomplete_form.hidden_tag() }}
+
+                                        <input id="uncomplete_task" name="uncomplete_task" type="hidden" value="{{ f_task.task }}">
+                                        {{ uncomplete_form.submit(class="btn btn-control btn-primary") }}
+                                    </form>
+                                    {% include 'includes/delete_modal.html' %}
+                                    <button type="button" class="btn btn-control btn-danger" data-toggle="modal" data-target="#Delete-Modal">
                                         Delete
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -75,5 +80,4 @@
                 </table>
             </div>
     </div>
-    
 {% endblock %}
